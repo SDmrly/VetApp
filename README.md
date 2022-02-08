@@ -50,7 +50,7 @@ kullanıcıların tanımlamış oldukları hayvanları güncelleyebilir silebili
 mevcut kullanıcı kayıtlarını kullanıcı adı, isim ve ya soyisim ile arama yapabilir,
 mevcut hayvan kayıtlarını hayvan ismi, hayvan sahibi adı ve ya soyadı ile arama yapabilir.
 
-Eğer PostgreSql veritabanı yedeğini kullanırsanır sisteme giriş için yönetici kullanıcı adı : `admin` ve şifre: `admin`
+Eğer PostgreSql veritabanı yedeğini kullanırsanız sisteme giriş için yönetici kullanıcı adı : `admin` ve şifre: `admin`
 
 
 

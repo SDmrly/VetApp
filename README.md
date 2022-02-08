@@ -8,7 +8,7 @@ VetApp java kullanılarak geliştirilmiş bir uygulamadır. Çalıştırma ve ge
 Veritabanı olarak PostgreSQL kullandım ve veritabanı yedeğini `VetApp_PostgreSql_Backup` içerisinde verdim. Farklı bir veri tabanı kullanılmak istenirse 
 `src/main/resources/application.properties` düzenleyebilirsiniz.
 
-VetApp bağımlılıkların yönetilmesi ve inşa için Apache Maven kullanir. Kok dizindeki `mvnw` isimli betik projeyi calisir hale getirmek icin kullanilabilir.
+VetApp bağımlılıkların yönetilmesi ve inşa için Apache Maven kullanir. Kök dizindeki `mvnw` isimli betik projeyi çalışır hale getirmek için kullanilabilir.
 `pom.xml` dosyasının bulunduğu kök dizin yoluna gidin. Örn: `cd C:\Users\Sinan Demiralay\Desktop\VetApp`
 
 Windows ortamda derlemek için:
@@ -23,7 +23,7 @@ Ubuntu ortamda derlemek için:
 ./mvnw package
 ```
 
-Bu komut `pom.xml` dosyasini okuyarak bagimliliklari indirir projeyi derler ve paketler ve asagidaki komutla calistirilabilir:
+Bu komut `pom.xml` dosyasini okuyarak bağımlılıkları indirir projeyi derler ve paketler ve aşağıdaki komutla çalıştırır:
 
 Windows ortamda çalıştırmak için:
 

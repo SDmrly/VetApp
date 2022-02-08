@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Ana Sayfa</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+    <!-- create navigation bar ( header) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:href="@{/index}">Veteriner Uygulaması</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+                    <li>
+                        <a th:href="@{/logout}">Logout (<span sec:authentication="principal.username"> User</span>)</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/home}">Profil (<span sec:authentication="principal.username"> User</span>)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container h4" style="padding-top: 5%">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <p>Sisteme üye olabilir, üyeler sisteme giriş yapabilir.</p>
+                <p>Her bir üye hayvan kaydı yapabilir.</p>
+                <p>Üyeler hayvan ekleme çıkartma güncelleme işlemleri yapabilir.</p>
+                <p>Sadece ADMIN rolüne sahip kişiler üye kaydı silme gibi işlemleri yapabilir.</p>
+                <hr>
+                <p>Kullanılan teknolojiler: Spring Boot, Spring Security, Thymeleaf, PostgreSQL, Bootstrap</p>
+                <hr>
+                <br>
+                <a th:href="@{/user/registration}"><button class="btn btn-secondary">Kayıt Ol</button></a>
+                <a th:href="@{/user/login}"><button class="btn btn-warning">Giriş Yap</button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

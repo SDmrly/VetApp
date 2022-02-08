@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Üye Bilgileri</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" href="../../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <a th:href="@{/home}"><h4>Veteriner Uygulaması</h4></a>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a th:href="@{/user/information}">Bilgilerim</a>
+            </li>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Hayvan İşlemleri</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li><a th:href="@{/pet/petlist}">Hayvanlarım</a></li>
+                </ul>
+            </li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Yönetim</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li><a th:href="@{/admin/petlist}">Hayvan İşlemleri</a></li>
+                    <li><a th:href="@{/admin/userlist}">Kullanıcı İşlemleri</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li><a href="#" class="download" th:href="@{/logout}">Çıkış (<span
+                    sec:authentication="principal.username"></span>)</a></li>
+        </ul>
+
+    </nav>
+    <!-- Page Content  -->
+    <div id="content">
+        <div class="table-responsive">
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">Başarıyla güncellendi!</div>
+            </div>
+
+            <form th:action="@{'/admin/userdetail/' + ${id}}" method="post"
+                  th:object="${userdata}">
+                <div class="form-group">
+                    <label class="control-label" for="username"> Kullanıcı Adı </label> <input
+                        id="username" class="form-control" th:field="*{userName}" required
+                        autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="firstName"> Ad </label>
+                    <input id="firstName" class="form-control" th:field="*{firstName}"
+                           required autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="lastName"> Soyad </label> <input
+                        id="lastName" class="form-control" th:field="*{lastName}"
+                        required autofocus="autofocus"/>
+                </div>
+
+                <input type="hidden" th:field="*{information.id}"/>
+
+                <div class="form-group">
+                    <label class="control-label" for="email"> E-Mail </label> <input
+                        id="email" class="form-control" th:field="*{information.email}"
+                        required autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="telephone"> Telefon </label> <input
+                        id="telephone" class="form-control" th:field="*{information.telephone}"
+                        required autofocus="autofocus" placeholder="(555)-555-5555" maxlength="10"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="address"> Adres </label><textarea
+                        id="address" class="form-control" th:field="*{information.address}"
+                        required autofocus="autofocus" rows="5" cols="50"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="animaltype"> Yetki </label>
+                    <select class="form-control" id="animaltype" th:field="*{roles}">
+                        <option th:each="roles:${userroles}" th:value="${roles.id}" th:text="${roles.roleName}"></option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,8 @@
 # VetApp
-Spring, Jpa, Maven, Thymeleaf kullanılarak hazırlanmış basit veteriner uygulamasıdır. Windows ortamda JDK 17 sürümü kullanılarak geliştirilmiştir. 
+Spring, Jpa, Maven, Thymeleaf ve Bootstrap kullanılarak hazırlanmış basit veteriner uygulamasıdır. Windows ortamda JDK 17 sürümü kullanılarak geliştirilmiştir. 
 Gerekli JDK sürümü kullanıldığı taktirde Ubuntu ortamlarda rahatlıkla geliştirilmeye çalıştırılmaya devam edilebilmektir.
+
+Projede Spring Boot Security ve Thymeleaf Security5 kullanışmıştır. Sisteme giriş yapmış kullanıcıları sorgulamak, rol yönetimi yapmakta kolaylık sağlamaktadır.
 
 ##Kurulum
 
